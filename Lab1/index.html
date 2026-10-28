@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Язык SQL</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="wrapper">
+
+    <header id="top">
+        <h1>Язык запросов SQL</h1>
+    </header>
+
+    <nav>
+        <h2>Содержание</h2>
+        <ol>
+            <li><a href="#history">История создания</a></li>
+            <li><a href="#overview">Краткий обзор языка</a></li>
+            <li><a href="#examples">Примеры кода</a></li>
+            <li><a href="#used">Использованные теги и CSS-свойства</a></li>
+        </ol>
+    </nav>
+
+    <main>
+        <!-- Раздел 1 -->
+        <section id="history">
+            <h2>История создания</h2>
+
+            <img class="img-left" src="img/database.svg" alt="База данных" width="150">
+
+            <p>
+                <strong>SQL</strong> (<abbr title="Structured Query Language">англ.</abbr>
+                <em>Structured Query Language</em> — «язык структурированных запросов») —
+                декларативный язык программирования, который применяется для создания,
+                изменения и управления данными в реляционных базах данных.
+            </p>
+            <p>
+                Основой для SQL стала реляционная модель данных, которую в
+                <time datetime="1970">1970</time> году описал сотрудник компании IBM
+                <b>Эдгар Кодд</b> в своей статье. После этого в IBM начали работу над
+                экспериментальной СУБД <i>System R</i>, и для неё был нужен удобный язык запросов.
+            </p>
+            <p>
+                В начале 1970-х годов <b>Дональд Чемберлин</b> и <b>Рэймонд Бойс</b> разработали
+                язык <mark>SEQUEL</mark> (Structured English Query Language). Позже его пришлось
+                переименовать в SQL, потому что название «SEQUEL» уже было торговой маркой
+                другой компании. Поэтому до сих пор многие произносят SQL как «сиквел».
+            </p>
+
+            <img class="img-right" src="img/table.svg" alt="Таблица в базе данных" width="200">
+
+            <p>
+                Первой коммерческой СУБД с поддержкой SQL стала Oracle V2 в 1979 году.
+                В <time datetime="1986">1986</time> году SQL был принят как стандарт
+                ANSI, а в 1987 году — как стандарт ISO. С тех пор стандарт много раз
+                обновлялся. Основные версии стандарта приведены в таблице ниже.
+            </p>
+            <blockquote>
+                <q>Данные должны храниться в виде отношений (таблиц)</q> —
+                <cite>главная идея реляционной модели Э. Кодда</cite>.
+            </blockquote>
+
+            <table>
+                <caption>Таблица 1. Версии стандарта SQL</caption>
+                <thead>
+                    <tr>
+                        <th>Год</th>
+                        <th>Название</th>
+                        <th>Что добавили</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1986</td>
+                        <td>SQL-86</td>
+                        <td>Первая версия стандарта ANSI</td>
+                    </tr>
+                    <tr>
+                        <td>1989</td>
+                        <td>SQL-89</td>
+                        <td>Ограничения целостности</td>
+                    </tr>
+                    <tr>
+                        <td>1992</td>
+                        <td>SQL-92</td>
+                        <td>Новые типы данных, JOIN, большая доработка стандарта</td>
+                    </tr>
+                    <tr>
+                        <td>1999</td>
+                        <td>SQL:1999</td>
+                        <td>Регулярные выражения, рекурсивные запросы, триггеры</td>
+                    </tr>
+                    <tr>
+                        <td>2003</td>
+                        <td>SQL:2003</td>
+                        <td>Работа с XML, оконные функции</td>
+                    </tr>
+                    <tr>
+                        <td>2016</td>
+                        <td>SQL:2016</td>
+                        <td>Работа с JSON</td>
+                    </tr>
+                    <tr>
+                        <td>2023</td>
+                        <td>SQL:2023</td>
+                        <td>Графовые запросы (SQL/PGQ), тип JSON</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><a href="#top">↑ Наверх</a></p>
+        </section>
+
+        <!-- Раздел 2 -->
+        <section id="overview">
+            <h2>Краткий обзор языка</h2>
+
+            <figure class="img-center">
+                <img src="img/sql-logo.svg" alt="Пример запроса SQL">
+                <figcaption>Рисунок 3. Самый известный запрос SELECT</figcaption>
+            </figure>
+
+            <p>
+                SQL — это <em>декларативный</em> язык: программист пишет, <strong>что</strong>
+                нужно получить, а не <strong>как</strong> это сделать. Как именно найти данные,
+                решает сама СУБД. Все данные хранятся в таблицах, которые состоят
+                из строк (записей) и столбцов (полей).
+            </p>
+
+            <h3>Основные группы команд SQL</h3>
+            <ol>
+                <li><b>DDL</b> (Data Definition Language) — описание структуры: <code>CREATE</code>, <code>ALTER</code>, <code>DROP</code>.</li>
+                <li><b>DML</b> (Data Manipulation Language) — работа с данными: <code>SELECT</code>, <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>.</li>
+                <li><b>DCL</b> (Data Control Language) — права доступа: <code>GRANT</code>, <code>REVOKE</code>.</li>
+                <li><b>TCL</b> (Transaction Control Language) — транзакции: <code>COMMIT</code>, <code>ROLLBACK</code>.</li>
+            </ol>
+
+            <h3>Популярные СУБД, которые используют SQL</h3>
+            <ul class="standard">
+                <li><a href="https://www.mysql.com/" target="_blank">MySQL</a></li>
+                <li><a href="https://www.postgresql.org/" target="_blank">PostgreSQL</a></li>
+                <li><a href="https://www.sqlite.org/" target="_blank">SQLite</a></li>
+                <li>Microsoft SQL Server</li>
+                <li>Oracle Database</li>
+            </ul>
+
+            <h3>Основные типы данных</h3>
+            <ul class="custom">
+                <li><code>INT</code> — целые числа</li>
+                <li><code>DECIMAL</code> — дробные числа с фиксированной точностью</li>
+                <li><code>VARCHAR(n)</code> — строка длиной до <var>n</var> символов</li>
+                <li><code>DATE</code> — дата</li>
+                <li><code>BOOLEAN</code> — логическое значение</li>
+            </ul>
+
+            <dl>
+                <dt>Первичный ключ (PRIMARY KEY)</dt>
+                <dd>Поле, которое однозначно определяет каждую строку таблицы.</dd>
+                <dt>Внешний ключ (FOREIGN KEY)</dt>
+                <dd>Поле, которое ссылается на первичный ключ другой таблицы.</dd>
+            </dl>
+
+            <p>
+                Подробнее можно прочитать в статье
+                <a href="https://ru.wikipedia.org/wiki/SQL" target="_blank">SQL на Википедии</a>.
+                Примеры запросов есть в <a href="#examples">следующем разделе</a>.
+                Чтобы выполнить запрос во многих программах, нужно нажать
+                <kbd>Ctrl</kbd> + <kbd>Enter</kbd>.
+            </p>
+            <p><a href="#top">↑ Наверх</a></p>
+        </section>
+
+        <!-- Раздел 3 -->
+        <section id="examples">
+            <h2>Примеры кода</h2>
+
+            <h3>1. Создание таблицы</h3>
+<pre><code><span class="com">-- создаём таблицу студентов</span>
+<span class="kw">CREATE TABLE</span> students (
+    id    <span class="type">INT</span> <span class="kw">PRIMARY KEY</span>,
+    name  <span class="type">VARCHAR</span>(<span class="num">50</span>) <span class="kw">NOT NULL</span>,
+    age   <span class="type">INT</span>,
+    grp   <span class="type">VARCHAR</span>(<span class="num">10</span>)
+);</code></pre>
+
+            <h3>2. Добавление данных</h3>
+<pre><code><span class="kw">INSERT INTO</span> students (id, name, age, grp)
+<span class="kw">VALUES</span> (<span class="num">1</span>, <span class="str">'Анна'</span>, <span class="num">19</span>, <span class="str">'КИ23-01'</span>),
+       (<span class="num">2</span>, <span class="str">'Иван'</span>, <span class="num">20</span>, <span class="str">'КИ23-01'</span>),
+       (<span class="num">3</span>, <span class="str">'Олег'</span>, <span class="num">18</span>, <span class="str">'КИ23-02'</span>);</code></pre>
+
+            <h3>3. Выборка данных</h3>
+<pre><code><span class="com">-- студенты старше 18 лет, отсортированные по имени</span>
+<span class="kw">SELECT</span> name, age
+<span class="kw">FROM</span> students
+<span class="kw">WHERE</span> age &gt; <span class="num">18</span>
+<span class="kw">ORDER BY</span> name;</code></pre>
+
+            <h3>4. Группировка</h3>
+<pre><code><span class="kw">SELECT</span> grp, <span class="fn">COUNT</span>(*) <span class="kw">AS</span> cnt, <span class="fn">AVG</span>(age) <span class="kw">AS</span> avg_age
+<span class="kw">FROM</span> students
+<span class="kw">GROUP BY</span> grp;</code></pre>
+
+            <h3>5. Изменение и удаление</h3>
+<pre><code><span class="kw">UPDATE</span> students <span class="kw">SET</span> age = age + <span class="num">1</span> <span class="kw">WHERE</span> id = <span class="num">3</span>;
+<span class="kw">DELETE FROM</span> students <span class="kw">WHERE</span> grp = <span class="str">'КИ23-02'</span>;</code></pre>
+
+            <p>
+                Результат запроса из примера 3:<br>
+                <samp>Анна | 19</samp><br>
+                <samp>Иван | 20</samp>
+            </p>
+            <p><a href="#top">↑ Наверх</a></p>
+        </section>
+
+        <hr>
+
+        <!-- Список использованных тегов и свойств -->
+        <section id="used">
+            <h2>Использованные теги и CSS-свойства</h2>
+            <h3>HTML-теги (53)</h3>
+            <ul class="used">
+                <li><code>&lt;a&gt;</code></li>
+                <li><code>&lt;abbr&gt;</code></li>
+                <li><code>&lt;address&gt;</code></li>
+                <li><code>&lt;b&gt;</code></li>
+                <li><code>&lt;blockquote&gt;</code></li>
+                <li><code>&lt;body&gt;</code></li>
+                <li><code>&lt;br&gt;</code></li>
+                <li><code>&lt;caption&gt;</code></li>
+                <li><code>&lt;cite&gt;</code></li>
+                <li><code>&lt;code&gt;</code></li>
+                <li><code>&lt;dd&gt;</code></li>
+                <li><code>&lt;div&gt;</code></li>
+                <li><code>&lt;dl&gt;</code></li>
+                <li><code>&lt;dt&gt;</code></li>
+                <li><code>&lt;em&gt;</code></li>
+                <li><code>&lt;figcaption&gt;</code></li>
+                <li><code>&lt;figure&gt;</code></li>
+                <li><code>&lt;footer&gt;</code></li>
+                <li><code>&lt;h1&gt;</code></li>
+                <li><code>&lt;h2&gt;</code></li>
+                <li><code>&lt;h3&gt;</code></li>
+                <li><code>&lt;head&gt;</code></li>
+                <li><code>&lt;header&gt;</code></li>
+                <li><code>&lt;hr&gt;</code></li>
+                <li><code>&lt;html&gt;</code></li>
+                <li><code>&lt;i&gt;</code></li>
+                <li><code>&lt;img&gt;</code></li>
+                <li><code>&lt;kbd&gt;</code></li>
+                <li><code>&lt;li&gt;</code></li>
+                <li><code>&lt;link&gt;</code></li>
+                <li><code>&lt;main&gt;</code></li>
+                <li><code>&lt;mark&gt;</code></li>
+                <li><code>&lt;meta&gt;</code></li>
+                <li><code>&lt;nav&gt;</code></li>
+                <li><code>&lt;ol&gt;</code></li>
+                <li><code>&lt;p&gt;</code></li>
+                <li><code>&lt;pre&gt;</code></li>
+                <li><code>&lt;q&gt;</code></li>
+                <li><code>&lt;samp&gt;</code></li>
+                <li><code>&lt;section&gt;</code></li>
+                <li><code>&lt;small&gt;</code></li>
+                <li><code>&lt;span&gt;</code></li>
+                <li><code>&lt;strong&gt;</code></li>
+                <li><code>&lt;table&gt;</code></li>
+                <li><code>&lt;tbody&gt;</code></li>
+                <li><code>&lt;td&gt;</code></li>
+                <li><code>&lt;th&gt;</code></li>
+                <li><code>&lt;thead&gt;</code></li>
+                <li><code>&lt;time&gt;</code></li>
+                <li><code>&lt;title&gt;</code></li>
+                <li><code>&lt;tr&gt;</code></li>
+                <li><code>&lt;ul&gt;</code></li>
+                <li><code>&lt;var&gt;</code></li>
+            </ul>
+            <h3>CSS-свойства (40)</h3>
+            <ul class="used">
+                <li><code>background-color</code></li>
+                <li><code>border</code></li>
+                <li><code>border-bottom</code></li>
+                <li><code>border-collapse</code></li>
+                <li><code>border-left</code></li>
+                <li><code>border-radius</code></li>
+                <li><code>box-shadow</code></li>
+                <li><code>caption-side</code></li>
+                <li><code>clear</code></li>
+                <li><code>color</code></li>
+                <li><code>column-count</code></li>
+                <li><code>cursor</code></li>
+                <li><code>display</code></li>
+                <li><code>float</code></li>
+                <li><code>font-family</code></li>
+                <li><code>font-size</code></li>
+                <li><code>font-style</code></li>
+                <li><code>font-weight</code></li>
+                <li><code>height</code></li>
+                <li><code>letter-spacing</code></li>
+                <li><code>line-height</code></li>
+                <li><code>list-style-image</code></li>
+                <li><code>list-style-position</code></li>
+                <li><code>list-style-type</code></li>
+                <li><code>margin</code></li>
+                <li><code>margin-bottom</code></li>
+                <li><code>margin-top</code></li>
+                <li><code>max-width</code></li>
+                <li><code>opacity</code></li>
+                <li><code>overflow-x</code></li>
+                <li><code>padding</code></li>
+                <li><code>padding-bottom</code></li>
+                <li><code>text-align</code></li>
+                <li><code>text-decoration</code></li>
+                <li><code>text-indent</code></li>
+                <li><code>text-transform</code></li>
+                <li><code>transition</code></li>
+                <li><code>vertical-align</code></li>
+                <li><code>white-space</code></li>
+                <li><code>width</code></li>
+            </ul>
+            <p><a href="#top">↑ Наверх</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <p><small>Лабораторная работа №1. Статья о языке SQL. 2026 г.</small></p>
+        <address>Источник: <a href="https://ru.wikipedia.org/wiki/SQL" target="_blank">ru.wikipedia.org</a></address>
+    </footer>
+
+</div>
+</body>
+</html>

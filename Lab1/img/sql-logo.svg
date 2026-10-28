@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="140" viewBox="0 0 360 140">
+  <rect width="360" height="140" rx="12" fill="#1e1e2e"/>
+  <text x="180" y="78" font-family="Courier New, monospace" font-size="56" font-weight="bold" text-anchor="middle" fill="#89b4fa">SELECT *</text>
+  <text x="180" y="115" font-family="Arial" font-size="18" text-anchor="middle" fill="#a6e3a1">Structured Query Language</text>
+</svg>

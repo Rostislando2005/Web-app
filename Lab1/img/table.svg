@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="160" viewBox="0 0 240 160">
+  <rect width="240" height="160" fill="#fdf6e9"/>
+  <rect x="20" y="20" width="200" height="120" fill="#ffffff" stroke="#c07a1a" stroke-width="2"/>
+  <rect x="20" y="20" width="200" height="30" fill="#e8a33d"/>
+  <text x="45" y="40" font-family="Arial" font-size="13" fill="#ffffff">id</text>
+  <text x="95" y="40" font-family="Arial" font-size="13" fill="#ffffff">name</text>
+  <text x="165" y="40" font-family="Arial" font-size="13" fill="#ffffff">age</text>
+  <line x1="80" y1="20" x2="80" y2="140" stroke="#c07a1a"/>
+  <line x1="150" y1="20" x2="150" y2="140" stroke="#c07a1a"/>
+  <line x1="20" y1="80" x2="220" y2="80" stroke="#c07a1a"/>
+  <line x1="20" y1="110" x2="220" y2="110" stroke="#c07a1a"/>
+  <text x="45" y="70" font-family="Arial" font-size="13">1</text>
+  <text x="95" y="70" font-family="Arial" font-size="13">Анна</text>
+  <text x="165" y="70" font-family="Arial" font-size="13">19</text>
+  <text x="45" y="100" font-family="Arial" font-size="13">2</text>
+  <text x="95" y="100" font-family="Arial" font-size="13">Иван</text>
+  <text x="165" y="100" font-family="Arial" font-size="13">20</text>
+  <text x="45" y="130" font-family="Arial" font-size="13">3</text>
+  <text x="95" y="130" font-family="Arial" font-size="13">Олег</text>
+  <text x="165" y="130" font-family="Arial" font-size="13">18</text>
+</svg>

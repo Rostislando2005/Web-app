@@ -1,0 +1,233 @@
+/* Подключаем нестандартный шрифт из локального файла */
+@font-face {
+    font-family: "Russo One";
+    src: url("../fonts/RussoOne-Regular.ttf") format("truetype");
+}
+
+/* Общие настройки страницы */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #222222;
+    background-color: #f4f4f4;
+}
+
+.wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 30px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Заголовки */
+h1, h2, h3 {
+    font-family: "Russo One", Arial, sans-serif;
+    font-weight: normal;
+    color: #1f3d5c;
+}
+
+h1 {
+    font-size: 24px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+h2 {
+    font-size: 18px;
+    margin-top: 30px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #3d7ab8;
+    clear: both;
+}
+
+h3 {
+    font-size: 15px;
+}
+
+p {
+    text-indent: 25px;
+    text-align: justify;
+}
+
+/* Ссылки */
+a {
+    color: #3d7ab8;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #c0392b;
+    text-decoration: underline;
+}
+
+/* Содержание */
+nav {
+    padding: 10px 20px;
+    background-color: #eef4fb;
+    border-left: 4px solid #3d7ab8;
+}
+
+nav h2 {
+    margin-top: 5px;
+    border-bottom: none;
+}
+
+/* Картинки с разным выравниванием */
+.img-left {
+    float: left;
+    margin: 0 20px 10px 0;
+    border: 1px solid #cccccc;
+}
+
+.img-right {
+    float: right;
+    margin: 0 0 10px 20px;
+    border: 1px solid #cccccc;
+}
+
+figure.img-center {
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    clear: both;
+}
+
+figure.img-center img {
+    border-radius: 12px;
+    width: 360px;
+    max-width: 100%;
+    height: auto;
+}
+
+figcaption {
+    font-style: italic;
+    font-size: 12px;
+    color: #777777;
+}
+
+/* Списки */
+ol {
+    list-style-type: decimal;
+}
+
+ul.standard {
+    list-style-type: disc;
+}
+
+ul.custom {
+    list-style-image: url("../img/marker.svg");
+    list-style-position: outside;
+}
+
+li {
+    margin-bottom: 4px;
+}
+
+/* Таблица */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+
+caption {
+    caption-side: top;
+    font-weight: bold;
+    padding: 5px;
+}
+
+th, td {
+    border: 1px solid #999999;
+    padding: 6px 10px;
+    vertical-align: top;
+}
+
+th {
+    background-color: #3d7ab8;
+    color: #ffffff;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #eef4fb;
+}
+
+tbody tr:hover {
+    background-color: #fdf6e9;
+    cursor: pointer;
+}
+
+/* Цитата */
+blockquote {
+    margin: 15px 40px;
+    padding: 10px 15px;
+    background-color: #fafafa;
+    border-left: 4px solid #e8a33d;
+    font-style: italic;
+}
+
+mark {
+    background-color: #fff3a0;
+}
+
+abbr {
+    border-bottom: 1px dotted #555555;
+    cursor: help;
+}
+
+kbd {
+    padding: 1px 4px;
+    border: 1px solid #aaaaaa;
+    border-radius: 3px;
+    background-color: #eeeeee;
+    font-family: "Courier New", monospace;
+}
+
+/* Подсветка кода (как тёмная тема в редакторе) */
+pre {
+    padding: 15px;
+    background-color: #1e1e2e;
+    color: #cdd6f4;
+    border-radius: 6px;
+    overflow-x: auto;
+    white-space: pre;
+    font-size: 13px;
+}
+
+pre code {
+    font-family: Consolas, "Courier New", monospace;
+}
+
+.kw   { color: #cba6f7; font-weight: bold; } /* ключевые слова */
+.fn   { color: #89b4fa; }                    /* функции */
+.str  { color: #a6e3a1; }                    /* строки */
+.num  { color: #fab387; }                    /* числа */
+.com  { color: #6c7086; font-style: italic; } /* комментарии */
+.type { color: #f9e2af; }                    /* типы данных */
+
+/* Список тегов и свойств в конце */
+.used {
+    column-count: 3;
+    font-size: 13px;
+}
+
+hr {
+    height: 1px;
+    border: none;
+    background-color: #cccccc;
+    margin: 30px 0;
+}
+
+footer {
+    font-size: 12px;
+    text-align: center;
+    color: #777777;
+    opacity: 0.8;
+}
+
+.clearfix {
+    clear: both;
+}
