@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторная 5. JavaScript</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrapper">
+    <h1>Лабораторная работа №5 (вариант 11)</h1>
+    <p class="hint">Результаты выводятся на страницу и в консоль браузера (F12 → Console).</p>
+
+    <!-- Задание 1 -->
+    <section>
+        <h2>Задание 1</h2>
+        <p>Вычислить: (1+2)·(1+2+3)·...·(1+2+...+50)</p>
+        <button id="btn1">Вычислить</button>
+        <div class="result" id="result1"></div>
+    </section>
+
+    <!-- Задание 2 -->
+    <section>
+        <h2>Задание 2</h2>
+        <p><b>Часть А.</b> Произведение элементов массива между первым и последним элементами,
+            для которых |x − π| ≤ 10<sup>−5</sup> (без методов Array).</p>
+        <p><b>Часть Б.</b> Удалить из массива (методами Array) все элементы, у модуля целой части которых
+            сумма цифр чётных разрядов равна сумме цифр нечётных разрядов.</p>
+        <label for="array">Массив (числа через пробел):</label>
+        <input type="text" id="array" value="1.5 3.14159 2 -4 0.5 3.141592 7 121 3.1415926 45.7 -253.2 1342.8 9">
+        <button id="btn2">Обработать</button>
+        <div class="result" id="result2"></div>
+    </section>
+
+    <!-- Задание 4 -->
+    <section>
+        <h2>Задание 4</h2>
+        <p>Даны 2 слова. Проверить, состоят ли они из одних и тех же букв с учётом повторений и без учёта регистра.</p>
+        <input type="text" id="word1" value="Апельсин">
+        <input type="text" id="word2" value="спаниель">
+        <button id="btn4">Проверить</button>
+        <div class="result" id="result4"></div>
+    </section>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
