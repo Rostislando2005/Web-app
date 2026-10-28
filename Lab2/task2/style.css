@@ -1,0 +1,279 @@
+/* ===== Общие стили ===== */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #000;
+}
+
+/* Цветной прямоугольник. Чёрная рамка 15px делает отступы между блоками */
+.box {
+    height: 150px;
+    border: 15px solid #000;
+    box-sizing: border-box;
+    color: #fff;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Цвета блоков */
+.b10 { background-color: #CD5C5C; }
+.b11 { background-color: #DC143C; }
+.b12 { background-color: #8B0000; }
+.b13 { background-color: #FF0000; }
+.b20 { background-color: #FFC0CB; }
+.b21 { background-color: #FF69B4; }
+.b22 { background-color: #C71585; }
+.b30 { background-color: #ADFF2F; }
+.b31 { background-color: #00FF00; }
+.b32 { background-color: #32CD32; }
+.b33 { background-color: #00FA9A; }
+.b34 { background-color: #2E8B57; }
+.b35 { background-color: #006400; }
+.b36 { background-color: #9ACD32; }
+.b37 { background-color: #808000; }
+.b50 { background-color: #FFA07A; }
+.b51 { background-color: #FF4500; }
+.b60 { background-color: #BC8F8F; }
+.b61 { background-color: #F4A460; }
+.b62 { background-color: #D2691E; }
+.b63 { background-color: #8B4513; }
+.b64 { background-color: #A52A2A; }
+
+
+/* ===== Разрешение 1200px (по умолчанию) ===== */
+
+/* Блок 1: четыре одинаковых прямоугольника в ряд */
+.block1 {
+    display: flex;
+}
+.block1 .box {
+    width: 25%;
+}
+
+/* Блок 2: слева два друг под другом, справа один большой */
+.block2 {
+    display: flex;
+}
+.block2-left {
+    width: 33.33%;
+    display: flex;
+    flex-direction: column;
+}
+.b22 {
+    width: 66.67%;
+    height: 300px;
+}
+
+/* Блок 3 */
+.block3 {
+    display: flex;
+}
+.block3-left {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+}
+.b30, .b31 {
+    height: 225px;
+}
+/* правая часть: элементы идут колонками сверху вниз */
+.block3-right {
+    width: 75%;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.b32 {
+    width: 50%;
+    height: 300px;
+}
+.pair {
+    width: 50%;
+    display: flex;
+}
+.pair .box {
+    width: 50%;
+}
+.b37 {
+    width: 50%;
+    height: 300px;
+}
+
+/* Блок 4: два прямоугольника с пустым местом вокруг */
+.block4 {
+    display: flex;
+    justify-content: space-around;
+}
+.block4 .box {
+    width: 16.67%;
+}
+
+/* Блок 5: колонки сверху вниз с переносом */
+.block5 {
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.b60, .b61 {
+    width: 25%;
+    height: 300px;
+}
+.block5-mid {
+    width: 50%;
+    display: flex;
+}
+.block5-mid .box {
+    width: 50%;
+}
+.b64 {
+    width: 50%;
+}
+
+
+/* ===== Разрешение 768px ===== */
+@media (max-width: 1199px) {
+
+    /* Блок 1: три в ряд, 12-го нет */
+    .block1 .box {
+        width: 33.33%;
+    }
+    .b12 {
+        display: none;
+    }
+
+    /* Блок 2: два сверху, один большой снизу */
+    .block2 {
+        flex-wrap: wrap;
+    }
+    .block2-left {
+        width: 100%;
+        flex-direction: row;
+    }
+    .block2-left .box {
+        width: 50%;
+    }
+    .b22 {
+        width: 100%;
+        height: 150px;
+    }
+
+    /* Блок 3 */
+    .b30 {
+        height: 300px;
+    }
+    .b31 {
+        height: 150px;
+    }
+    .block3-right {
+        flex-direction: row;
+    }
+    .b32 {
+        height: 300px;
+    }
+    .pair1 .box {
+        height: 300px;
+    }
+    .b37 {
+        height: 150px;
+    }
+
+    /* Блок 4 */
+    .block4 .box {
+        width: 33.33%;
+    }
+
+    /* Блок 5: 61-го нет, всё в один ряд */
+    .block5 {
+        flex-wrap: nowrap;
+        flex-direction: row;
+    }
+    .b61 {
+        display: none;
+    }
+    .b60 {
+        width: 33.33%;
+    }
+    .block5-mid {
+        width: 33.33%;
+        flex-direction: column;
+    }
+    .block5-mid .box {
+        width: 100%;
+    }
+    .b64 {
+        width: 33.33%;
+        height: 300px;
+    }
+}
+
+
+/* ===== Разрешение 320px ===== */
+@media (max-width: 767px) {
+
+    .box {
+        font-size: 12px;
+    }
+
+    /* Блок 1: остаются только 10 и 13 */
+    .b11 {
+        display: none;
+    }
+    .block1 .b10 {
+        width: 66.67%;
+    }
+    .block1 .b13 {
+        width: 33.33%;
+    }
+
+    /* Блок 2: всё в два раза выше */
+    .b20, .b21, .b22 {
+        height: 300px;
+    }
+
+    /* Блок 3: левой части и 37-го нет, пары меняются местами */
+    .block3-left, .b37 {
+        display: none;
+    }
+    .block3-right {
+        width: 100%;
+        height: auto;
+    }
+    .b32, .pair {
+        width: 100%;
+    }
+    .pair1 .box {
+        height: 150px;
+    }
+    .pair1 {
+        order: 2;
+    }
+    .pair2 {
+        order: 1;
+    }
+    .b32 {
+        order: 0;
+    }
+
+    /* Блок 4: две половинки */
+    .block4 .box {
+        width: 50%;
+    }
+
+    /* Блок 5: всё друг под другом */
+    .block5 {
+        height: auto;
+        flex-direction: column;
+    }
+    .b60, .block5-mid, .b64 {
+        width: 100%;
+    }
+}

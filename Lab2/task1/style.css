@@ -1,0 +1,29 @@
+/* html растягиваем на весь экран и центрируем в нём body */
+html {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* блок с цифрами: строки идут друг под другом */
+.number {
+    display: flex;
+    flex-direction: column;
+}
+
+/* строка: квадраты идут друг за другом */
+.row {
+    display: flex;
+}
+
+/* один квадрат */
+.cell {
+    width: 60px;
+    height: 60px;
+}
+
+/* закрашенный квадрат (единственный цвет) */
+.on {
+    background-color: #2e86de;
+}
