@@ -1,0 +1,170 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    text-align: center;
+}
+
+.hint {
+    color: #777;
+}
+
+.scene {
+    position: relative;
+    width: 600px;
+    height: 400px;
+    margin: 0 auto;
+    background-color: #dff1fb;
+    border: 3px solid #555;
+    overflow: hidden;
+    /* transition: рамка плавно меняет цвет при наведении */
+    transition: border-color 0.5s;
+}
+
+.scene:hover {
+    border-color: #e67e22;
+}
+
+/* при наведении все анимации останавливаются */
+.scene:hover .hammer,
+.scene:hover .nail,
+.scene:hover .bang {
+    animation-play-state: paused;
+}
+
+/* ===== Доска ===== */
+.board {
+    position: absolute;
+    left: 0;
+    top: 300px;
+    width: 600px;
+    height: 100px;
+    background-color: #c8975a;
+    border-top: 4px solid #a0703a;
+    z-index: 2;
+}
+
+/* ===== Гвоздь ===== */
+/* острие гвоздя стоит на доске: 300 - 118 = 182 */
+.nail {
+    position: absolute;
+    left: 230px;
+    top: 182px;
+    width: 40px;
+    height: 118px;
+    z-index: 1;
+    animation: nail-down 4s infinite;
+}
+
+.nail-head {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 40px;
+    height: 8px;
+    background-color: #666;
+    border-radius: 3px;
+}
+
+.nail-body {
+    position: absolute;
+    left: 16px;
+    top: 8px;
+    width: 8px;
+    height: 100px;
+    background-color: #999;
+}
+
+/* острие — треугольник */
+.nail-tip {
+    position: absolute;
+    left: 16px;
+    top: 108px;
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 10px solid #999;
+}
+
+/* ===== Молоток ===== */
+/* вращается вокруг правого края ручки (там, где рука) */
+.hammer {
+    position: absolute;
+    left: 235px;
+    top: 122px;
+    width: 215px;
+    height: 60px;
+    z-index: 3;
+    transform-origin: right center;
+    animation: hammer-hit 4s infinite;
+}
+
+.hammer-head {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 30px;
+    height: 60px;
+    background-color: #444;
+    border-radius: 4px;
+}
+
+.handle {
+    position: absolute;
+    left: 30px;
+    top: 23px;
+    width: 185px;
+    height: 14px;
+    background-color: #8b5a2b;
+    border-radius: 7px;
+}
+
+/* ===== Надпись "Тук!" ===== */
+.bang {
+    position: absolute;
+    left: 150px;
+    top: 150px;
+    color: #e74c3c;
+    font-size: 26px;
+    font-weight: bold;
+    opacity: 0;
+    z-index: 4;
+    animation: bang 4s infinite;
+}
+
+
+/* ===== Анимации =====
+   Один цикл = 4 секунды, в нём 3 удара: на 15%, 45% и 75%.
+   После каждого удара гвоздь уходит ниже, поэтому и молоток
+   каждый раз опускается ниже (translateY). */
+
+@keyframes hammer-hit {
+    0%   { transform: translateY(0) rotate(35deg); }
+    15%  { transform: translateY(0) rotate(0deg); }      /* удар 1 */
+    30%  { transform: translateY(40px) rotate(35deg); }
+    45%  { transform: translateY(40px) rotate(0deg); }   /* удар 2 */
+    60%  { transform: translateY(80px) rotate(35deg); }
+    75%  { transform: translateY(80px) rotate(0deg); }   /* удар 3 */
+    90%  { transform: translateY(80px) rotate(35deg); }
+    100% { transform: translateY(0) rotate(35deg); }
+}
+
+@keyframes nail-down {
+    0%, 15%   { transform: translateY(0); }
+    17%, 45%  { transform: translateY(40px); }
+    47%, 75%  { transform: translateY(80px); }
+    77%, 98%  { transform: translateY(110px); }   /* забит полностью */
+    100%      { transform: translateY(0); }       /* новый гвоздь */
+}
+
+@keyframes bang {
+    0%, 14%   { opacity: 0; transform: translateY(0) scale(0.5); }
+    16%       { opacity: 1; transform: translateY(0) scale(1.2); }
+    24%       { opacity: 0; transform: translateY(0) scale(1); }
+    44%       { opacity: 0; transform: translateY(40px) scale(0.5); }
+    46%       { opacity: 1; transform: translateY(40px) scale(1.2); }
+    54%       { opacity: 0; transform: translateY(40px) scale(1); }
+    74%       { opacity: 0; transform: translateY(80px) scale(0.5); }
+    76%       { opacity: 1; transform: translateY(80px) scale(1.2); }
+    84%, 100% { opacity: 0; transform: translateY(80px) scale(1); }
+}
