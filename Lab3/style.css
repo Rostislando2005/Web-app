@@ -73,7 +73,6 @@ textarea:focus {
     outline: none;
 }
 
-/* на десктопе подпись уже есть в label, поэтому placeholder прячем */
 ::placeholder {
     color: transparent;
 }
@@ -127,13 +126,11 @@ button.reset {
         padding: 10px;
     }
 
-    /* поля идут друг под другом на всю ширину */
     .row {
         flex-direction: column;
         align-items: stretch;
     }
 
-    /* label не показываем, подпись теперь в placeholder */
     .row > label {
         display: none;
     }
@@ -142,7 +139,6 @@ button.reset {
         color: #888;
     }
 
-    /* у date и file нет placeholder, поэтому для них подпись оставляем */
     .row > label.always {
         display: block;
         width: auto;
